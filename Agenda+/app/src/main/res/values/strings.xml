@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Agenda de compromisso</string>
+    <string name="data_compromisso">Data do compromisso:</string>
+    <string name="valor_data" />
+    <string name="hora_ini">Horário de inicio:</string>
+    <string name="hora_fim">Horário de fim:</string>
+    <string name="local">Local do evento:</string>
+    <string name="descricao">Descrição do evento:</string>
+    <string name="participantes">Participantes:</string>
+    <string name="bt_cadastrar">cadastrar</string>
+    <string name="valor_h_i" />
+</resources>
