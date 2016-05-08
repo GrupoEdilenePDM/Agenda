@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Agenda para compromissos</string>
+    <string name="bt_compromisso">compromisso</string>
+    <string name="bt_agendar">agendar</string>
+    <string name="bt_alterar">alterar</string>
+    <string name="bt_cancelar">cancelar</string>
+    <string name="bt_cancelamento">cancelar</string>
+    <string name="titulo" />
+    <string name="tipo_evento">Tipo do evento:</string>
+    <string name="edit_tipo_evento" />
+    <string name="titulo2">REPETIR:</string>
+    <string name="ocorrencias">Ocorrencias:</string>
+    <string name="repeticao">A cada:</string>
+    <string name="opcao_de_termino">Termina:</string>
+    <string name="radioButton1">Sempre</string>
+    <string name="radioButton2">Após</string>
+    <string name="radioButton3">Em</string>
+    <string name="textView2">ocorrências</string>
+    <string name="TextView2">ocorrencias</string>
+    <string name="textView3" />
+    <string name="bt_cadastrar">cadastrar</string>
+    <string name="bt_cancela">cancelar</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.felipe.agendaparacompromissos">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Calendario">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".tela_de_opcao" />
+        <activity android:name=".Tela_de_cadastro" />
+        <activity android:name=".Tela_de_alteracao" />
+        <activity android:name=".Tela_de_cancelar" />
+        <activity android:name=".Tela_de_cadastro2" />
+        <activity android:name=".Tela_de_alteracao2" />
+        <activity android:name=".Tela_de_cancelar2"></activity>
+    </application>
+
+</manifest>

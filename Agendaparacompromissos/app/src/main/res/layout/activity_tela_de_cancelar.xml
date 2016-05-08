@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.felipe.agendadecompromisso.menu_cadastro">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Data de inicio:"
+        android:id="@+id/Data_de_compromisso"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=""
+        android:id="@+id/v_data_de_compromisso"
+        android:layout_below="@+id/Data_de_compromisso"
+        android:layout_alignParentStart="true"
+        android:background="#f2f9f9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Horario de inicio:"
+        android:id="@+id/horario_ini"
+        android:layout_below="@+id/v_data_de_compromisso"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=""
+        android:id="@+id/v_horario_ini"
+        android:layout_below="@+id/horario_ini"
+        android:layout_alignParentStart="true"
+        android:background="#f2f9f9"
+        android:autoText="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Hora de fim:"
+        android:id="@+id/horario_fim"
+        android:layout_below="@+id/v_horario_ini"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=""
+        android:id="@+id/v_horario_fim"
+        android:layout_below="@+id/horario_fim"
+        android:layout_alignParentStart="true"
+        android:background="#f2f9f9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Local:"
+        android:id="@+id/local"
+        android:layout_below="@+id/v_horario_fim"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_local"
+        android:layout_below="@+id/local"
+        android:layout_alignParentStart="true"
+        android:text=""
+        android:background="#f2f9f9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Descrição:"
+        android:id="@+id/descricao"
+        android:layout_below="@+id/edit_local"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/edit_descricao"
+        android:layout_below="@+id/descricao"
+        android:layout_alignParentStart="true"
+        android:text=""
+        android:background="#f2f9f9" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="continuar"
+        android:id="@+id/bt_proxima_tela"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/horario_fim" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/edit_descricao"
+        android:layout_below="@+id/descricao"
+        android:layout_alignParentStart="true"
+        android:text=""
+        android:background="#f2f9f9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/tipo_evento"
+        android:id="@+id/tipo_evento"
+        android:layout_below="@+id/edit_descricao"
+        android:layout_toStartOf="@+id/bt_proxima_tela" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_alignTop="@+id/tipo_evento"
+        android:layout_toEndOf="@+id/tipo_evento" />
+
+</RelativeLayout>
