@@ -68,6 +68,13 @@ public class Tela_de_cadastro extends AppCompatActivity {
                 tipos_eventos.add("saúde");
                 tipos_eventos.add("familia");
 
+        String Nome_spinner = spinner.getSelectedItem().toString();
+        Intent intent = new Intent(Tela_de_cadastro.this, Banco_de_dados.class);
+        intent.putExtra("data_compromisso", data_compromisso);
+        startActivity(intent);
+        finish();
+
+
 
         v_horario_ini.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,7 @@
 package com.example.felipe.agendaparacompromissos;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,9 +23,11 @@ public class Tela_de_alteracao extends AppCompatActivity {
     private TextView descricao;
     private EditText edit_descricao;
     private Button bt_proxima_tela;
-    private EditText edit_tipo_evento;
     private  Spinner spinner;
     private ArrayAdapter<String> tipos_eventos;
+    private  Banco_de_dados banco_de_dados;
+    private Cursor cursor;
+    private static String codigo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,21 @@ public class Tela_de_alteracao extends AppCompatActivity {
         tipos_eventos.add("lazer");
         tipos_eventos.add("saúde");
         tipos_eventos.add("familia");
+
+        banco_de_dados = new Banco_de_dados(this);
+        codigo = this.getIntent().getStringExtra("codigo");
+
+        Cursor cursor = banco_de_dados.carregaDadoById(Integer.parseInt(codigo));
+        Data_de_compromisso.setText(cursor.getString(cursor.getColumnIndexOrThrow(Manter_bd.data_inicio)));
+        v_horario_ini.setText(cursor.getString(cursor.getColumnIndexOrThrow(Manter_bd.hora_inicio)));
+        v_horario_ini.setText(cursor.getString(cursor.getColumnIndexOrThrow(Manter_bd.hora_fim)));
+        edit_local.setText(cursor.getString(cursor.getColumnIndexOrThrow(Manter_bd.local)));
+        descricao.setText(cursor.getString(cursor.getColumnIndexOrThrow(Manter_bd.descricao)));
+
+
+
+
+
 
         bt_proxima_tela=(Button)findViewById(R.id.bt_proxima_tela);
         bt_proxima_tela.setOnClickListener(new View.OnClickListener() {
