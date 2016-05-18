@@ -25,7 +25,15 @@
         android:text="@string/bt_compromisso"
         android:id="@+id/bt_compromisso"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignEnd="@+id/calendario" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bt_agendar"
+        android:id="@+id/bt_agendar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.felipe.agendaparacompromissos;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,9 +23,14 @@ public class Tela_de_cadastro2 extends AppCompatActivity {
     private EditText editText2;
     private Button bt_cadastrar;
     private Button bt_voltar;
+    private EditText edit_participantes;
     private ArrayAdapter<String> ocorrencias;
     private ArrayAdapter<String> repeticao;
-
+    private String data_inicio;
+    private String hora_ini;
+    private String hora_fim;
+    private String  local;
+     private String descricao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +38,19 @@ public class Tela_de_cadastro2 extends AppCompatActivity {
         setContentView(R.layout.activity_tela_de_cadastro2);
         editText = (EditText) findViewById(R.id.editText);
         editText2 = (EditText) findViewById(R.id.editText2);
+        edit_participantes=(EditText)findViewById(R.id.edit_participantes);
         bt_cadastrar = (Button) findViewById(R.id.bt_cadastrar);
+        bt_voltar = (Button) findViewById(R.id.bt_voltar);
         radioButton1=(RadioButton)findViewById(R.id.radioButton1);
         radioButton2=(RadioButton)findViewById(R.id.radioButton2);
         radioButton3=(RadioButton)findViewById(R.id.radioButton3);
         editText2.addTextChangedListener(mask.insert("##/##/####",editText2));
+
+
+
+
+
+
 
         spinner2 = (Spinner) findViewById(R.id.spinner2);
         ocorrencias = new ArrayAdapter<String>(Tela_de_cadastro2.this, android.R.layout.simple_spinner_item);
@@ -58,37 +72,128 @@ public class Tela_de_cadastro2 extends AppCompatActivity {
         repeticao.add("1 ano");
 
 
+
+
+
         bt_cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String num_ocorrencias;
-                String data_final;
-                num_ocorrencias=editText.getText().toString();
-                data_final=editText2.getText().toString();
-                if (radioButton1.isChecked()) {
-                        if (num_ocorrencias.trim().isEmpty()) {
-                         Toast.makeText(getApplicationContext(), "Preencha o número de ocorrências !!", Toast.LENGTH_SHORT).show();
-                         } else {
-                        Toast.makeText(getApplicationContext(), "Cadastrado", Toast.LENGTH_SHORT).show();
-                              }
+                Banco_de_dados banco_de_dados=new Banco_de_dados(getBaseContext());
+                Bundle bundle=getIntent().getExtras();
+                String data_inicio=bundle.getString("data_inicio");
+                String hora_ini=bundle.getString("hora_ini");
+                String hora_fim=bundle.getString("hora_fim");
+                String local=bundle.getString("local");
+                String descricao=bundle.getString("descricao");
+                String tipo_de_evento=bundle.getString("tipo_de_evento");
 
-                } else if (radioButton2.isChecked()) {
-                    Toast.makeText(getApplicationContext(), "Cadastrado", Toast.LENGTH_SHORT).show();
-                } else if (radioButton3.isChecked()) {
-                            if (data_final.trim().isEmpty()) {
-                                Toast.makeText(getApplicationContext(), "Preencha com a data final !!", Toast.LENGTH_SHORT).show();
 
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Cadastrado", Toast.LENGTH_SHORT).show();
-                    }
+                String qnt_participantes = edit_participantes.getText().toString();
+                String num_ocorrencias = editText.getText().toString();
+                String data_final = editText2.getText().toString();
+                String ocorrencias=spinner2.getSelectedItem().toString();
+                String repeticao = spinner3.getSelectedItem().toString();
+                String ocorrencia_selecionada=ocorrencias;
+                String repeticoes_selecionada=repeticao;
+
+
+
+
+                String resultado;
+                String radio;
+                if (qnt_participantes.trim().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Existe algum campo vazio!!", Toast.LENGTH_SHORT).show();
                 } else {
+                    if (radioButton1.isChecked()) {
+                        if (num_ocorrencias.trim().isEmpty()) {
+                            Toast.makeText(getApplicationContext(), "Preencha o número de ocorrências !!", Toast.LENGTH_SHORT).show();
+                        } else {
+                                radio="1";
 
-                    Toast.makeText(getApplicationContext(), "Marque alguma opção acima !!!", Toast.LENGTH_SHORT).show();
+                            resultado = banco_de_dados.insere_dados_tabela(data_inicio, hora_ini, hora_fim, local, descricao, tipo_de_evento, qnt_participantes, ocorrencia_selecionada, repeticoes_selecionada, radio,num_ocorrencias,data_final);
+                            Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Tela_de_cadastro2.this, Calendario.class);
+                            startActivity(intent);
+                            finish();
+
+
+
+                        }
+
+                    } else if (radioButton2.isChecked()) {
+                        radio="2";
+                        resultado = banco_de_dados.insere_dados_tabela(data_inicio, hora_ini, hora_fim, local, descricao, tipo_de_evento, qnt_participantes, ocorrencia_selecionada, repeticoes_selecionada, radio,num_ocorrencias,data_final);
+
+                        Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Tela_de_cadastro2.this, Calendario.class);
+                        startActivity(intent);
+                        finish();
+
+                    } else if (radioButton3.isChecked()) {
+                        if (data_final.trim().isEmpty()) {
+                            Toast.makeText(getApplicationContext(), "Preencha com a data final !!", Toast.LENGTH_SHORT).show();
+
+                        } else {
+
+
+                            radio="3";
+                            resultado = banco_de_dados.insere_dados_tabela(data_inicio, hora_ini, hora_fim, local, descricao, tipo_de_evento, qnt_participantes, ocorrencia_selecionada, repeticoes_selecionada, radio,num_ocorrencias,data_final);
+
+                            Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Tela_de_cadastro2.this, Calendario.class);
+                            startActivity(intent);
+                            finish();
+
+
+                        }
+                    } else {
+
+                        Toast.makeText(getApplicationContext(), "Marque alguma opção acima !!!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
         });
 
+           bt_voltar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   Intent intent = new Intent(Tela_de_cadastro2.this, Calendario.class);
+                    startActivity(intent);
+                    finish();
 
+                    //Toast.makeText(getApplicationContext(), "Em manutenção...", Toast.LENGTH_SHORT).show();
+
+
+                }
+            });
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

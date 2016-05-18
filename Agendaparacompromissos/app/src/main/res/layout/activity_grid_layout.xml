@@ -1,0 +1,122 @@
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="37"
+    android:rowCount="80" >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/data_inicio"
+        android:id="@+id/data_inicio"
+        android:layout_row="3"
+        android:layout_column="0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/v_data_inicio"
+        android:id="@+id/v_data_inicio"
+        android:layout_row="11"
+        android:layout_column="0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/Horario_inicial"
+        android:id="@+id/Horario_inicial"
+        android:layout_row="23"
+        android:layout_column="0"
+        android:layout_gravity="top" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/v_horario_inicial"
+        android:id="@+id/v_horario_inicial"
+        android:layout_row="27"
+        android:layout_column="0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/Descricao"
+        android:id="@+id/Descricao"
+        android:layout_row="35"
+        android:layout_column="0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/v_descricao"
+        android:id="@+id/v_descricao"
+        android:layout_row="37"
+        android:layout_column="0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/Tipo_do_evento"
+        android:id="@+id/Tipo_do_evento"
+        android:layout_row="43"
+        android:layout_column="0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/v_tipo_do_evento"
+        android:id="@+id/v_tipo_do_evento"
+        android:layout_row="44"
+        android:layout_column="0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/participantes"
+        android:id="@+id/participantes"
+        android:layout_row="47"
+        android:layout_column="0"
+        android:layout_gravity="top" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/spinner2"
+        android:id="@+id/spinner2"
+        android:layout_row="64"
+        android:layout_column="0"
+        android:layout_gravity="top" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/spinner3"
+        android:id="@+id/spinner3"
+        android:layout_row="66"
+        android:layout_column="0"
+        android:layout_gravity="top" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/radio"
+        android:id="@+id/radio"
+        android:layout_row="79"
+        android:layout_column="0"
+        android:layout_gravity="top" />
+
+
+</GridLayout>

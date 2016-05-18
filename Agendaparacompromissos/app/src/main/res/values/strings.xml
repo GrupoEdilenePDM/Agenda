@@ -20,4 +20,25 @@
     <string name="textView3" />
     <string name="bt_cadastrar">cadastrar</string>
     <string name="bt_cancela">cancelar</string>
+    <string name="tipo_de_evento">tipo de evento</string>
+    <string name="dados">dados</string>
+    <string name="Horario_inicial">Horario inicial:</string>
+    <string name="v_horario_inicial">v_horario_inicial</string>
+    <string name="Descricao">Descrição do evento:</string>
+    <string name="v_descricao">v_descricao</string>
+    <string name="Tipo_do_evento">Tipo do evento:</string>
+    <string name="v_tipo_do_evento">v_tipo_do_evento</string>
+    <string name="participante">Participante (s):</string>
+    <string name="edit_participante" />
+    <string name="edit_participantes">edit_participantes</string>
+    <string name="Titulo2" />
+    <string name="bt_voltar">voltar</string>
+    <string name="spinner2">spinner2</string>
+    <string name="spinner3">spinner3</string>
+    <string name="participantes">participantes</string>
+    <string name="radio">radio</string>
+    <string name="data_inicio">Data do evento:</string>
+    <string name="v_data_inicio">v_data_inicio</string>
+    <string name="bt_deletar">deletar</string>
+    <string name="v_data_de_compromisso" />
 </resources>

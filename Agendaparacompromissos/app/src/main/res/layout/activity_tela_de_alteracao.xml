@@ -19,24 +19,15 @@ tools:context="com.example.felipe.agendadecompromisso.menu_cadastro">
     android:layout_alignParentStart="true" />
 
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text=""
-    android:id="@+id/v_data_de_compromisso"
-    android:layout_below="@+id/Data_de_compromisso"
-    android:layout_alignParentStart="true"
-    android:background="#f2f9f9" />
-
-<TextView
+    <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAppearance="?android:attr/textAppearanceLarge"
     android:text="Horario de inicio:"
     android:id="@+id/horario_ini"
-    android:layout_below="@+id/v_data_de_compromisso"
-    android:layout_alignParentStart="true" />
+    android:layout_alignParentStart="true"
+    android:layout_marginTop="40dp"
+    android:layout_below="@+id/Data_de_compromisso" />
 
 <TextView
     android:layout_width="match_parent"
@@ -128,5 +119,17 @@ tools:context="com.example.felipe.agendadecompromisso.menu_cadastro">
         android:id="@+id/spinner"
         android:layout_alignTop="@+id/tipo_evento"
         android:layout_toEndOf="@+id/tipo_evento" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/v_data_de_compromisso"
+        android:layout_below="@+id/Data_de_compromisso"
+        android:layout_alignParentStart="true"
+        android:text="@string/v_data_de_compromisso"
+        android:numeric="decimal"
+        android:background="#f2f9f9" />
 
 </RelativeLayout>

@@ -11,6 +11,7 @@ import android.widget.Toast;
 public class Calendario extends AppCompatActivity {
     private CalendarView calendario;
     private Button bt_compromisso;
+    private Button bt_agendar;
     private String data_compromisso;
 
 
@@ -32,13 +33,13 @@ public class Calendario extends AppCompatActivity {
             }
         });
 
-        bt_compromisso=(Button)findViewById(R.id.bt_compromisso);
-        bt_compromisso.setOnClickListener(new View.OnClickListener() {
+        bt_agendar=(Button)findViewById(R.id.bt_agendar);
+        bt_agendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if(data_compromisso!=null){
-                Intent intent = new Intent(Calendario.this, tela_de_opcao.class);
+                Intent intent = new Intent(Calendario.this, Tela_de_cadastro.class);
                 intent.putExtra("data_compromisso", data_compromisso);
                 startActivity(intent);
                 finish();}
@@ -51,5 +52,16 @@ public class Calendario extends AppCompatActivity {
 
             }
         });
-    }
+        bt_compromisso=(Button)findViewById(R.id.bt_compromisso);
+        bt_compromisso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Calendario.this, tela_de_opcao.class);
+                intent.putExtra("data_compromisso", data_compromisso);
+                startActivity(intent);
+                finish();
+            }
+
+        });
+}
 }

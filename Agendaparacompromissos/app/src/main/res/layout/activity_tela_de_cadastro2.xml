@@ -93,9 +93,8 @@
         android:layout_height="wrap_content"
         android:text="cadastrar"
         android:id="@+id/bt_cadastrar"
-        android:layout_below="@+id/radioGroup"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="42dp" />
+        android:layout_below="@+id/edit_participantes"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="80dp"
@@ -112,9 +111,9 @@
         android:layout_height="50dp"
         android:id="@+id/editText2"
         android:layout_marginLeft="20dp"
-        android:layout_above="@+id/bt_cadastrar"
-        android:layout_alignStart="@+id/editText"
-        android:numeric="decimal" />
+        android:numeric="decimal"
+        android:layout_above="@+id/participante"
+        android:layout_alignStart="@+id/editText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -125,5 +124,25 @@
         android:layout_alignBottom="@+id/editText"
         android:layout_toEndOf="@+id/editText"
         android:layout_marginTop="-10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/participante"
+        android:id="@+id/participante"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edit_participantes"
+        android:layout_below="@+id/participante"
+        android:layout_alignParentStart="true"
+        android:singleLine="true" />
 
 </RelativeLayout>

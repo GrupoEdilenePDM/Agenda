@@ -21,7 +21,9 @@
         <activity android:name=".Tela_de_cancelar" />
         <activity android:name=".Tela_de_cadastro2" />
         <activity android:name=".Tela_de_alteracao2" />
-        <activity android:name=".Tela_de_cancelar2"></activity>
-    </application>
+        <activity android:name=".Tela_de_cancelar2" />
+        <activity android:name=".GridLayout"></activity>
+
+       </application>
 
 </manifest>
