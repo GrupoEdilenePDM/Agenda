@@ -16,8 +16,8 @@
         android:id="@+id/calendario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bt_compromisso"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/bt_agendar" />
 
     <Button
         android:layout_width="wrap_content"
@@ -32,6 +32,14 @@
         android:layout_height="wrap_content"
         android:text="@string/bt_agendar"
         android:id="@+id/bt_agendar"
+        android:layout_above="@+id/bt_compromisso"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bt_expulgar"
+        android:id="@+id/bt_expulgar"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 

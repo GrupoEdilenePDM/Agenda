@@ -16,7 +16,6 @@ public class tela_de_opcao extends AppCompatActivity {
     private TextView titulo;
     private Button bt_agendar;
     private Button bt_voltar;
-    private  String data_compromisso;
     private ListView lista_de_compromissos;
     private  Cursor cursor;
     @Override
@@ -29,21 +28,23 @@ public class tela_de_opcao extends AppCompatActivity {
         titulo=(TextView)findViewById(R.id.titulo);
         titulo.setText(" Lista de Eventos Agendados:");
 
-        Bundle bundle=getIntent().getExtras();
-        data_compromisso=bundle.getString("data_compromisso");
 
 
 
 
-      Banco_de_dados banco_de_dados = new Banco_de_dados(getBaseContext());
+
+        Banco_de_dados banco_de_dados = new Banco_de_dados(getBaseContext());
         cursor = banco_de_dados.carregaDados();
 
-      String[] nomeCampos = new String[] {Manter_bd.data_inicio,Manter_bd.hora_inicio, Manter_bd.descricao,Manter_bd.tipo_de_evento,Manter_bd.ocorrencias,Manter_bd.qntd_ocorrencias,Manter_bd.participantes,Manter_bd.temp};
-        int[] idViews = new int[] {R.id.v_data_inicio,R.id.v_horario_inicial, R.id.v_descricao,R.id.v_tipo_do_evento,R.id.spinner2,R.id.spinner3,R.id.participantes,R.id.radio};
+
+
+      String[] nomeCampos = new String[] {Manter_bd.data_inicio,Manter_bd.hora_inicio, Manter_bd.descricao,Manter_bd.tipo_de_evento,Manter_bd.ocorrencias,Manter_bd.qntd_ocorrencias,Manter_bd.participantes,Manter_bd.temp,Manter_bd.temp2};
+        int[] idViews = new int[] {R.id.v_data_inicio,R.id.v_horario_inicial, R.id.v_descricao,R.id.v_tipo_do_evento,R.id.spinner2,R.id.spinner3,R.id.participantes,R.id.radio,R.id.textView1};
 
         SimpleCursorAdapter adaptador = new SimpleCursorAdapter(this,R.layout.activity_grid_layout,cursor,nomeCampos,idViews, 0);
         lista_de_compromissos = (ListView)findViewById(R.id.lista_de_compromissos);
         lista_de_compromissos.setAdapter(adaptador);
+
 //----------------------------------------------------------
        lista_de_compromissos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
@@ -60,17 +61,7 @@ public class tela_de_opcao extends AppCompatActivity {
        });
 
 
-        bt_agendar=(Button)findViewById(R.id.bt_agendar);
-        bt_agendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(tela_de_opcao.this, Tela_de_cadastro.class);
-                intent.putExtra("data_compromisso", data_compromisso);
-                startActivity(intent);
-                finish();
 
-            }
-        });
 
         bt_voltar=(Button)findViewById(R.id.bt_voltar);
         bt_voltar.setOnClickListener(new View.OnClickListener() {

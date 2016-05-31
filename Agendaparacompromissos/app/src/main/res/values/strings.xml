@@ -41,4 +41,10 @@
     <string name="v_data_inicio">v_data_inicio</string>
     <string name="bt_deletar">deletar</string>
     <string name="v_data_de_compromisso" />
+    <string name="bt_expulgar">expulgar</string>
+    <string name="data_de_inicio">Data de inicio:</string>
+    <string name="data_de_fim">Data de fim:</string>
+    <string name="edit_data_ini">insira a data de inicio</string>
+    <string name="edit_data_fim">insira a data de fim</string>
+    <string name="bt_eliminar">eliminar compromissos</string>
 </resources>

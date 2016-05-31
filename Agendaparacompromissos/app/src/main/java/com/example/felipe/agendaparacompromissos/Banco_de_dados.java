@@ -7,7 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -15,9 +21,10 @@ import java.util.List;
  */
 public class Banco_de_dados {
 
-    private Manter_bd manterbd, manterbd2;
+    private Manter_bd manterbd;
     private Bundle bundle;
     private Context ctx;
+    private Calendar user;
 
     public Banco_de_dados(Context context) {//método construtor que recebe um objeto  da classe Manterbd
         manterbd = new Manter_bd(context);
@@ -25,7 +32,7 @@ public class Banco_de_dados {
     }
 
 
-    public String insere_dados_tabela(String data_inicio, String hora_inicio, String hora_fim, String local, String descricao, String tipo_de_evento, String participantes, String ocorrencias, String qntd_ocorrencias, String radio,String num_ocorrencias,String data_final) {
+    public String insere_dados_tabela(String data_inicio, String hora_inicio, String hora_fim, String local, String descricao, String tipo_de_evento, String participantes, String ocorrencias, String qntd_ocorrencias, String temp, String temp2) {
 
         SQLiteDatabase db = manterbd.getWritableDatabase();// á variavel db recebe um método que da a permissão de escrita no banco
         ContentValues inserindo = new ContentValues();//váriavel que insere os valores da classe dos atributos da classe Livro no banco
@@ -38,9 +45,8 @@ public class Banco_de_dados {
         inserindo.put(Manter_bd.participantes, participantes);
         inserindo.put(Manter_bd.ocorrencias, ocorrencias);
         inserindo.put(Manter_bd.qntd_ocorrencias, qntd_ocorrencias);
-        inserindo.put(Manter_bd.temp, radio);
-        inserindo.put(Manter_bd.num_ocorrencias, num_ocorrencias);
-        inserindo.put(Manter_bd.data_final, data_final);
+        inserindo.put(Manter_bd.temp, temp);
+        inserindo.put(Manter_bd.temp2, temp2);
 
 
         Long resultado;//essa variável armazenará o  resultado do banco, caso a inserção de certo ou não
@@ -109,7 +115,7 @@ public class Banco_de_dados {
 
     public Cursor carregaDados() {
         Cursor cursor;
-        String[] campos = {manterbd.Id, manterbd.data_inicio, manterbd.hora_inicio, manterbd.hora_fim, manterbd.local, manterbd.descricao, manterbd.tipo_de_evento, manterbd.ocorrencias, manterbd.qntd_ocorrencias, manterbd.participantes, manterbd.temp,manterbd.num_ocorrencias,manterbd.data_final};
+        String[] campos = {manterbd.Id, manterbd.data_inicio, manterbd.hora_inicio, manterbd.hora_fim, manterbd.local, manterbd.descricao, manterbd.tipo_de_evento, manterbd.ocorrencias, manterbd.qntd_ocorrencias, manterbd.participantes, manterbd.temp, manterbd.temp2,};
         SQLiteDatabase db = manterbd.getReadableDatabase();
         cursor = db.query(manterbd.Tabela, campos, null, null, null, null, null, null);
         if (cursor != null) {
@@ -136,7 +142,7 @@ public class Banco_de_dados {
 
     public Cursor carregaDadoById2(int id) {
         Cursor cursor;
-        String[] campos = {manterbd.Id, manterbd.participantes, manterbd.ocorrencias, manterbd.qntd_ocorrencias, manterbd.temp,manterbd.num_ocorrencias,manterbd.data_final};
+        String[] campos = {manterbd.Id, manterbd.participantes, manterbd.ocorrencias, manterbd.qntd_ocorrencias, manterbd.temp, manterbd.temp2};
         String where = Manter_bd.Id + "=" + id;
         SQLiteDatabase db = manterbd.getReadableDatabase();
         cursor = db.query(Manter_bd.Tabela, campos, where, null, null, null, null, null);
@@ -148,7 +154,7 @@ public class Banco_de_dados {
     }
 
 
-    public void alteraRegistro(int id, String data_inicio, String hora_inicio, String hora_fim, String local, String descricao, String tipo_de_evento, String participantes, String ocorrencias, String repeticoes, String temp,String num_ocorrencias,String data_final) {
+    public void alteraRegistro(int id, String data_inicio, String hora_inicio, String hora_fim, String local, String descricao, String tipo_de_evento, String participantes, String ocorrencias, String repeticoes, String temp, String temp2) {
         ContentValues valores;
         String where;
         SQLiteDatabase db = manterbd.getWritableDatabase();
@@ -164,8 +170,7 @@ public class Banco_de_dados {
         valores.put(Manter_bd.ocorrencias, ocorrencias);
         valores.put(Manter_bd.qntd_ocorrencias, repeticoes);
         valores.put(Manter_bd.temp, temp);
-        valores.put(Manter_bd.num_ocorrencias, num_ocorrencias);
-        valores.put(Manter_bd.data_final, data_final);
+        valores.put(Manter_bd.temp2, temp2);
 
         db.update(Manter_bd.Tabela, valores, where, null);
         db.close();
@@ -179,8 +184,23 @@ public class Banco_de_dados {
     }
 
 
+    public void expurgar_compromissos(String data_inicio, String data_fim) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date data_ini = new java.sql.Date(formatter.parse(data_inicio).getTime());
+        Date data_f = new java.sql.Date(formatter.parse(data_fim).getTime());
+
+       // String where = " DELETE FROM compromissos WHERE (DATE(data_inicio) >= DATE("+data_ini+")AND DATE(data_inico) <= DATE("+data_f+"))";
+       // SQLiteDatabase db = manterbd.getReadableDatabase();
+       // db.execSQL(where);
+     //   db.close();
+    }
+
 
 }
+
+
+
+
 
 
 

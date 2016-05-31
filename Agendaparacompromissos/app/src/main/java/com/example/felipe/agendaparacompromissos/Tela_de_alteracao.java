@@ -40,7 +40,7 @@ public class Tela_de_alteracao extends AppCompatActivity {
 
         Data_de_compromisso = (TextView) findViewById(R.id.Data_de_compromisso);
         v_data_de_compromisso = (EditText) findViewById(R.id.v_data_de_compromisso);
-        v_data_de_compromisso.addTextChangedListener(mask.insert("##/#/####",v_data_de_compromisso ));
+        v_data_de_compromisso.addTextChangedListener(mask.insert("#/#/####",v_data_de_compromisso ));
         horario_ini = (TextView) findViewById(R.id.horario_ini);
         v_horario_ini = (TextView) findViewById(R.id.v_horario_ini);
         horario_fim = (TextView) findViewById(R.id.horario_fim);

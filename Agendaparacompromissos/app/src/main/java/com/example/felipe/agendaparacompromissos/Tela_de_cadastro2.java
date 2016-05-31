@@ -90,6 +90,7 @@ public class Tela_de_cadastro2 extends AppCompatActivity {
 
                 String qnt_participantes = edit_participantes.getText().toString();
                 String num_ocorrencias = editText.getText().toString();
+                String sempre_repetir="sempre repetir";
                 String data_final = editText2.getText().toString();
                 String ocorrencias=spinner2.getSelectedItem().toString();
                 String repeticao = spinner3.getSelectedItem().toString();
@@ -110,7 +111,7 @@ public class Tela_de_cadastro2 extends AppCompatActivity {
                         } else {
                                 radio="1";
 
-                            resultado = banco_de_dados.insere_dados_tabela(data_inicio, hora_ini, hora_fim, local, descricao, tipo_de_evento, qnt_participantes, ocorrencia_selecionada, repeticoes_selecionada, radio,num_ocorrencias,data_final);
+                            resultado = banco_de_dados.insere_dados_tabela(data_inicio, hora_ini, hora_fim, local, descricao, tipo_de_evento, qnt_participantes, ocorrencia_selecionada, repeticoes_selecionada, radio,num_ocorrencias);
                             Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Tela_de_cadastro2.this, Calendario.class);
                             startActivity(intent);
@@ -122,7 +123,7 @@ public class Tela_de_cadastro2 extends AppCompatActivity {
 
                     } else if (radioButton2.isChecked()) {
                         radio="2";
-                        resultado = banco_de_dados.insere_dados_tabela(data_inicio, hora_ini, hora_fim, local, descricao, tipo_de_evento, qnt_participantes, ocorrencia_selecionada, repeticoes_selecionada, radio,num_ocorrencias,data_final);
+                        resultado = banco_de_dados.insere_dados_tabela(data_inicio, hora_ini, hora_fim, local, descricao, tipo_de_evento, qnt_participantes, ocorrencia_selecionada, repeticoes_selecionada, radio,sempre_repetir);
 
                         Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Tela_de_cadastro2.this, Calendario.class);
@@ -137,8 +138,7 @@ public class Tela_de_cadastro2 extends AppCompatActivity {
 
 
                             radio="3";
-                            resultado = banco_de_dados.insere_dados_tabela(data_inicio, hora_ini, hora_fim, local, descricao, tipo_de_evento, qnt_participantes, ocorrencia_selecionada, repeticoes_selecionada, radio,num_ocorrencias,data_final);
-
+                            resultado = banco_de_dados.insere_dados_tabela(data_inicio, hora_ini, hora_fim, local, descricao, tipo_de_evento, qnt_participantes, ocorrencia_selecionada, repeticoes_selecionada, radio,data_final);
                             Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Tela_de_cadastro2.this, Calendario.class);
                             startActivity(intent);

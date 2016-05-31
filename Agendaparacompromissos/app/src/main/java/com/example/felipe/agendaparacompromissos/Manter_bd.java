@@ -15,7 +15,7 @@ import java.util.Queue;
 public class Manter_bd extends SQLiteOpenHelper {
         //váriaveis privada e estáticas para toda  a classe
         public static final String nome_bd="Agenda";
-        public static final int versao_bd=5;// é importante para decidir a versão da base de dados com a ajuda do método onUpgradepublic static final String Id="_id";
+        public static final int versao_bd=1;// é importante para decidir a versão da base de dados com a ajuda do método onUpgradepublic static final String Id="_id";
         public  static  final String Tabela="compromissos";
         public static final String Id="_id";
         public static final String data_inicio="data_inicio";
@@ -28,8 +28,7 @@ public class Manter_bd extends SQLiteOpenHelper {
         public static  final String ocorrencias="ocorrencias";
       public static  final String qntd_ocorrencias="qntd_ocorrencias";
        public static  final String temp="temp";
-        public static final String  num_ocorrencias="num_ocorrencias";
-        public  static  final String data_final="data_final";
+         public static  final String temp2="temp2";
 
 
 
@@ -45,7 +44,7 @@ public class Manter_bd extends SQLiteOpenHelper {
 
         String criando_bd="CREATE TABLE compromissos( "+
                             Id+" INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                            data_inicio+" TEXT,"+
+                            "data_inicio TEXT,"+
                             hora_inicio+" TEXT,"+
                             hora_fim+" TEXT,"+
                             local+" TEXT,"+
@@ -55,9 +54,7 @@ public class Manter_bd extends SQLiteOpenHelper {
                             "ocorrencias TEXT,"+
                             "qntd_ocorrencias TEXT,"+
                              "temp TEXT,"+
-                               "num_ocorrencias TEXT,"+
-                                "data_final TEXT);";
-        String criando_bd2="";
+                               "temp2 TEXT);";
         //PEGO O PARÂMETRO PARA CHAMAR UM FUNÇÃO
             db.execSQL(criando_bd);//essa função executa o comando sql que cria o banco
 
