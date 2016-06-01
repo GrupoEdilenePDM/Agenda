@@ -64,7 +64,7 @@ public class Calendario extends AppCompatActivity {
                                             Intent intent = new Intent(Calendario.this, Tela_de_cadastro.class);
                                             intent.putExtra("data_compromisso", data_compromisso);
                                             startActivity(intent);
-                                            finish();
+                                            onPause();
                                                  }
 
 
@@ -82,7 +82,7 @@ public class Calendario extends AppCompatActivity {
                 Intent intent = new Intent(Calendario.this, tela_de_opcao.class);
                 intent.putExtra("data_compromisso",data_compromisso);
                 startActivity(intent);
-                finish();
+                onPause();
             }
 
             });
@@ -94,11 +94,18 @@ public class Calendario extends AppCompatActivity {
 
                 Intent intent = new Intent(Calendario.this, Tela_de_expurgo.class);
                 startActivity(intent);
-                finish();
+                onPause();
             }
 
         });
         }
-
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
 }

@@ -156,7 +156,7 @@ public class Tela_de_cadastro extends AppCompatActivity {
                     intent.putExtra("descricao", descricao);
                     intent.putExtra("tipo_de_evento", tipo_de_evento);
                     startActivity(intent);
-                    finish();
+                    onPause();
 
 
                 }
@@ -166,5 +166,18 @@ public class Tela_de_cadastro extends AppCompatActivity {
         });
 
 
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        setContentView(R.layout.activity_calendario);
     }
 }

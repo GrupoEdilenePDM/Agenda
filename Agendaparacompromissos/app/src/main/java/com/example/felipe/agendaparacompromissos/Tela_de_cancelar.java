@@ -49,13 +49,25 @@ public class Tela_de_cancelar extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Tela_de_cancelar.this, Tela_de_cancelar2.class);
                 startActivity(intent);
-                finish();
+                onPause();
 
 
             }
         });
 
     }
-
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        setContentView(R.layout.activity_calendario);
+    }
 
 }

@@ -47,4 +47,17 @@ public class Tela_de_cancelar2 extends AppCompatActivity {
         repeticao.add("1 ano");
 
     }
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        setContentView(R.layout.activity_tela_de_cancelar2);
+    }
 }

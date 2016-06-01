@@ -102,4 +102,17 @@ public class Tela_de_expurgo extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        setContentView(R.layout.activity_calendario);
+    }
 }

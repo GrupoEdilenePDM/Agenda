@@ -56,7 +56,7 @@ public class tela_de_opcao extends AppCompatActivity {
                Intent intent = new Intent(tela_de_opcao.this, Tela_de_alteracao.class);
                intent.putExtra("codigo", codigo);
                startActivity(intent);
-               finish();
+               onPause();
            }
        });
 
@@ -69,9 +69,22 @@ public class tela_de_opcao extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(tela_de_opcao.this, Calendario.class);
                 startActivity(intent);
-                finish();
+                onPause();
             }
         });
 
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        setContentView(R.layout.activity_calendario);
     }
 }

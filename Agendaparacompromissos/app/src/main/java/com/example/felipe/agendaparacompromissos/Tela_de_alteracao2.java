@@ -138,7 +138,7 @@ public class Tela_de_alteracao2 extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Alterado com sucesso", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(Tela_de_alteracao2.this, Calendario.class);
                                 startActivity(intent);
-                                finish();
+                                onPause();
 
 
                             }
@@ -150,7 +150,7 @@ public class Tela_de_alteracao2 extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Alterado com sucesso", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Tela_de_alteracao2.this, Calendario.class);
                             startActivity(intent);
-                            finish();
+                            onPause();
 
 
                         } else if (radioButton3.isChecked()) {
@@ -165,7 +165,7 @@ public class Tela_de_alteracao2 extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Alterado com sucesso", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(Tela_de_alteracao2.this, Calendario.class);
                                 startActivity(intent);
-                                finish();
+                                onPause();
 
 
                             }
@@ -196,11 +196,24 @@ public class Tela_de_alteracao2 extends AppCompatActivity {
                     banco_de_dados.deletaRegistro(Integer.parseInt(codigo));
                     Intent intent = new Intent(Tela_de_alteracao2.this, Calendario.class);
                     startActivity(intent);
-                    finish();
+                    onPause();
 
                 }
             });
 
 
         }
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        setContentView(R.layout.activity_tela_de_alteracao);
+    }
     }

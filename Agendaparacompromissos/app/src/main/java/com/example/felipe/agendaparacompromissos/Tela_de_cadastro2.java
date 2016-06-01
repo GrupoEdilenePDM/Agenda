@@ -115,7 +115,7 @@ public class Tela_de_cadastro2 extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Tela_de_cadastro2.this, Calendario.class);
                             startActivity(intent);
-                            finish();
+                            onPause();
 
 
 
@@ -128,7 +128,7 @@ public class Tela_de_cadastro2 extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Tela_de_cadastro2.this, Calendario.class);
                         startActivity(intent);
-                        finish();
+                        onPause();
 
                     } else if (radioButton3.isChecked()) {
                         if (data_final.trim().isEmpty()) {
@@ -142,7 +142,7 @@ public class Tela_de_cadastro2 extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Tela_de_cadastro2.this, Calendario.class);
                             startActivity(intent);
-                            finish();
+                            onPause();
 
 
                         }
@@ -160,13 +160,26 @@ public class Tela_de_cadastro2 extends AppCompatActivity {
                 public void onClick(View v) {
                    Intent intent = new Intent(Tela_de_cadastro2.this, Calendario.class);
                     startActivity(intent);
-                    finish();
+                    onPause();
 
                     //Toast.makeText(getApplicationContext(), "Em manutenção...", Toast.LENGTH_SHORT).show();
 
 
                 }
             });
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        setContentView(R.layout.activity_tela_de_cadastro);
     }
 }
 
