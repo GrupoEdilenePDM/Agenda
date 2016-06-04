@@ -47,4 +47,5 @@
     <string name="edit_data_ini">insira a data de inicio</string>
     <string name="edit_data_fim">insira a data de fim</string>
     <string name="bt_eliminar">eliminar compromissos</string>
+    <string name="bt_pesquisar">pesquisar compromissos</string>
 </resources>

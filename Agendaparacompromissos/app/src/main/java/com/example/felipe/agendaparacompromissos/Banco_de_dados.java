@@ -32,7 +32,7 @@ public class Banco_de_dados {
     }
 
 
-    public String insere_dados_tabela(String data_inicio, String hora_inicio, String hora_fim, String local, String descricao, String tipo_de_evento, String participantes, String ocorrencias, String qntd_ocorrencias, String temp, String temp2) {
+    public String insere_dados_tabela(String data_inicio, String hora_inicio, String hora_fim, String local, String descricao, String tipo_de_evento, String participantes, String ocorrencias, String qntd_ocorrencias, String temp, String temp2,int aux) {
 
         SQLiteDatabase db = manterbd.getWritableDatabase();// á variavel db recebe um método que da a permissão de escrita no banco
         ContentValues inserindo = new ContentValues();//váriavel que insere os valores da classe dos atributos da classe Livro no banco
@@ -47,6 +47,7 @@ public class Banco_de_dados {
         inserindo.put(Manter_bd.qntd_ocorrencias, qntd_ocorrencias);
         inserindo.put(Manter_bd.temp, temp);
         inserindo.put(Manter_bd.temp2, temp2);
+        inserindo.put("aux", aux);
 
 
         Long resultado;//essa variável armazenará o  resultado do banco, caso a inserção de certo ou não
@@ -76,46 +77,46 @@ public class Banco_de_dados {
     }*/
 
 
-    /*public ArrayList<String> consulta_compromissos(){
+    public ArrayList<String> consulta_compromissos(int data_ini,int data_fim){
         SQLiteDatabase db=manterbd.getReadableDatabase();
-        //String sql_select="SELECT "+manterbd.Id+","+manterbd.Titulo+","+manterbd.Autor+","+manterbd.Paginas+"FROM "+manterbd.Tabela+";";
-        String sql_select="SELECT _id,data_inicio,hora_inicio,hora_fim,local,descricao from compromisso";
+        String sql_select="SELECT data_inicio FROM compromissos  WHERE aux >= '"+data_ini+"' and aux <= '"+data_fim+"' ";
+       // String sql_select="SELECT _id,data_inicio,hora_inicio,hora_fim,local,descricao from compromisso";
         //participantes,tipo_eventos,ocorrencias,temp FROM compromisso;";
-        Cursor cursor=db.rawQuery(sql_select,null);
         ArrayList<String>compromisso=null;
+
+        Cursor cursor = db.rawQuery(sql_select,null);
+
         if(cursor!=null && cursor.moveToFirst()){
             compromisso=new ArrayList<String>();
             do{
 
+
                 compromisso.add(cursor.getString(0));
-                compromisso.add(cursor.getString(1));
-                compromisso.add(cursor.getString(2));
-                compromisso.add(cursor.getString(3));
+                /*compromisso.add(cursor.getString(3));
                 compromisso.add(cursor.getString(4));
                 compromisso.add(cursor.getString(5));
                 compromisso.add(cursor.getString(6));
-                /*compromisso.add(cursor.getString(7));
+                compromisso.add(cursor.getString(7));
                 compromisso.add(cursor.getString(8));
                 compromisso.add(cursor.getString(9));
-                compromisso.add(cursor.getString(10));*/
+                compromisso.add(cursor.getString(10));
+                compromisso.add(cursor.getString(11));
+                compromisso.add(cursor.getString(12));*/
 
 
-
-
-
-           /* }while (cursor.moveToNext());
+            }while (cursor.moveToNext());
 
         }
 
 
         return  compromisso;
 
-    }*/
+    }
 
 
-    public Cursor carregaDados() {
+   public Cursor carregaDados() {
         Cursor cursor;
-        String[] campos = {manterbd.Id, manterbd.data_inicio, manterbd.hora_inicio, manterbd.hora_fim, manterbd.local, manterbd.descricao, manterbd.tipo_de_evento, manterbd.ocorrencias, manterbd.qntd_ocorrencias, manterbd.participantes, manterbd.temp, manterbd.temp2,};
+        String[] campos = {manterbd.Id, manterbd.data_inicio, manterbd.hora_inicio, manterbd.hora_fim, manterbd.local, manterbd.descricao, manterbd.tipo_de_evento, manterbd.ocorrencias, manterbd.qntd_ocorrencias, manterbd.participantes, manterbd.temp, manterbd.temp2,manterbd.aux};
         SQLiteDatabase db = manterbd.getReadableDatabase();
         cursor = db.query(manterbd.Tabela, campos, null, null, null, null, null, null);
         if (cursor != null) {
@@ -142,7 +143,7 @@ public class Banco_de_dados {
 
     public Cursor carregaDadoById2(int id) {
         Cursor cursor;
-        String[] campos = {manterbd.Id, manterbd.participantes, manterbd.ocorrencias, manterbd.qntd_ocorrencias, manterbd.temp, manterbd.temp2};
+        String[] campos = {manterbd.Id, manterbd.participantes, manterbd.ocorrencias, manterbd.qntd_ocorrencias, manterbd.temp, manterbd.temp2,manterbd.aux};
         String where = Manter_bd.Id + "=" + id;
         SQLiteDatabase db = manterbd.getReadableDatabase();
         cursor = db.query(Manter_bd.Tabela, campos, where, null, null, null, null, null);
@@ -184,15 +185,20 @@ public class Banco_de_dados {
     }
 
 
-    public void expurgar_compromissos(String data_inicio, String data_fim) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date data_ini = new java.sql.Date(formatter.parse(data_inicio).getTime());
-        Date data_f = new java.sql.Date(formatter.parse(data_fim).getTime());
+    public void expurgar_compromissos(int data_ini, int data_fim) {
 
-       // String where = " DELETE FROM compromissos WHERE (DATE(data_inicio) >= DATE("+data_ini+")AND DATE(data_inico) <= DATE("+data_f+"))";
-       // SQLiteDatabase db = manterbd.getReadableDatabase();
-       // db.execSQL(where);
-     //   db.close();
+       String where = " DELETE FROM compromissos WHERE aux >= '"+data_ini+"' and aux <= '"+data_fim+"'";
+        SQLiteDatabase db = manterbd.getReadableDatabase();
+        db.execSQL(where);
+         db.close();
+    }
+
+    public void pesquisar_compromissos(int data_ini,int data_fim){
+        String where = " SELECT data_ini FROM compromissos WHERE aux >= '"+data_ini+"' and aux <= '"+data_fim+"'";
+        SQLiteDatabase db = manterbd.getReadableDatabase();
+        db.execSQL(where);
+        db.close();
+
     }
 
 

@@ -30,15 +30,14 @@ public class Tela_de_cadastro extends AppCompatActivity {
     private TextView descricao;
     private EditText edit_descricao;
     private Button bt_proxima_tela;
-    private  Button bt_voltar;
     private EditText edit_tipo_evento;
     private  Spinner spinner;
     private ArrayAdapter<String> tipos_eventos;
     private  int horas;
     private  int minutos;
     private TextView textView3;
-
-
+    private  int data_db;
+    private Button bt_tipo_evento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +55,14 @@ public class Tela_de_cadastro extends AppCompatActivity {
         descricao = (TextView) findViewById(R.id.descricao);
         edit_descricao = (EditText) findViewById(R.id.edit_descricao);
         bt_proxima_tela = (Button) findViewById(R.id.bt_proxima_tela);
-        bt_voltar = (Button) findViewById(R.id.bt_voltar);
+        bt_tipo_evento = (Button) findViewById(R.id.bt_tipo_evento);
 
        Bundle bundle=getIntent().getExtras();
         //Essa váriavel que armazena a data para mostrar na tela
        final String data_compromisso=bundle.getString("data_compromisso");
         v_data_de_compromisso.setText(data_compromisso);
-
+        //Essa váriavel armazena  a data  para comparação entre datas no banco
+        data_db=bundle.getInt("data_db");
 
 
                 spinner=(Spinner)findViewById(R.id.spinner);
@@ -136,8 +136,10 @@ public class Tela_de_cadastro extends AppCompatActivity {
                 String hora_fim=v_horario_fim.getText().toString();
                 String local=edit_local.getText().toString();
                 String descricao=edit_descricao.getText().toString();
+                // essa variável armazena o valor selecionado no spinner
                 String tipo_evento_selecionado = spinner.getSelectedItem().toString();
                 String tipo_de_evento=tipo_evento_selecionado;
+                int  data_db2=data_db;
 
 
                 if(data_inicio.trim().isEmpty() ||hora_ini.trim().isEmpty()||hora_fim.trim().isEmpty()||local.trim().isEmpty()||descricao.trim().isEmpty()||tipo_evento_selecionado.trim().isEmpty())
@@ -155,6 +157,7 @@ public class Tela_de_cadastro extends AppCompatActivity {
                     intent.putExtra("local", local);
                     intent.putExtra("descricao", descricao);
                     intent.putExtra("tipo_de_evento", tipo_de_evento);
+                    intent.putExtra("data_db", data_db2);
                     startActivity(intent);
                     onPause();
 
@@ -164,6 +167,18 @@ public class Tela_de_cadastro extends AppCompatActivity {
 
             }
         });
+
+        bt_tipo_evento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Tela_de_cadastro.this, Manipulando_eventos.class);
+                startActivity(intent);
+                finish();
+
+
+            }
+        });
+
 
 
     }

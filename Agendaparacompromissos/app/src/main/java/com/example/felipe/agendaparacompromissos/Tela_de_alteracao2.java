@@ -50,7 +50,7 @@ public class Tela_de_alteracao2 extends AppCompatActivity {
         radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
         radioButton3 = (RadioButton) findViewById(R.id.radioButton3);
         radiogroup = (RadioGroup) findViewById(R.id.radioGroup);
-        editText2.addTextChangedListener(mask.insert("##/##/####", editText2));
+        editText2.addTextChangedListener(mask.insert("#/#/####", editText2));
 
 
         spinner2 = (Spinner) findViewById(R.id.spinner2);
@@ -181,14 +181,6 @@ public class Tela_de_alteracao2 extends AppCompatActivity {
 
 
 
-        /*bt_voltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Tela_de_alteracao2.this, Calendario.class);
-                startActivity(intent);
-                finish();
-            }
-            });*/
 
             bt_deletar.setOnClickListener(new View.OnClickListener() {
                 @Override

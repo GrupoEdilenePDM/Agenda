@@ -29,6 +29,7 @@ public class Manter_bd extends SQLiteOpenHelper {
       public static  final String qntd_ocorrencias="qntd_ocorrencias";
        public static  final String temp="temp";
          public static  final String temp2="temp2";
+        public  static  final String aux="aux";
 
 
 
@@ -54,7 +55,8 @@ public class Manter_bd extends SQLiteOpenHelper {
                             "ocorrencias TEXT,"+
                             "qntd_ocorrencias TEXT,"+
                              "temp TEXT,"+
-                               "temp2 TEXT);";
+                               "temp2 TEXT,"+
+                                "aux INTEGER);";
         //PEGO O PARÂMETRO PARA CHAMAR UM FUNÇÃO
             db.execSQL(criando_bd);//essa função executa o comando sql que cria o banco
 

@@ -22,7 +22,7 @@
         <activity android:name=".Tela_de_alteracao2" />
         <activity android:name=".GridLayout" />
         <activity android:name=".Tela_de_expurgo" />
-        <activity android:name=".Calendario2"></activity>
+        <activity android:name=".Manipulando_eventos"></activity>
     </application>
 
 </manifest>

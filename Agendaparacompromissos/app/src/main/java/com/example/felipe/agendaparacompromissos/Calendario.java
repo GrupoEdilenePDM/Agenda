@@ -22,6 +22,7 @@ public class Calendario extends AppCompatActivity {
     private String data_compromisso;
     private  Calendar user;
     private Button bt_expulgar;
+    private int data_db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +33,38 @@ public class Calendario extends AppCompatActivity {
         calendario.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int ano, int mes, int dia) {
-                Integer.toString(dia);
-                int meses = mes + 1;
-                Integer.toString(meses);
-                Integer.toString(ano);
 
-                user = new GregorianCalendar(ano,mes,(dia+1));//pega a  data desejada
-
-                data_compromisso = dia + "/" + meses + "/" + ano;
+                //Para aparecer na tela de casdastro
+                String dia_str= Integer.toString(dia);
+               String mes_str= Integer.toString(mes+1);
+                String ano_str=Integer.toString(ano);
+                data_compromisso = dia_str + "/" + mes_str+ "/" + ano_str;
                 Toast.makeText(getApplicationContext(), data_compromisso, Toast.LENGTH_SHORT).show();
+
+                user = new GregorianCalendar(ano,mes,(dia+1));//pega a  data desejada para verificaçao
+
+                //Para cadastrar no banco
+               if(mes<10 && dia<10){
+                   String data_str;
+                   data_str=ano+""+0+""+(mes+1)+""+0+""+dia;
+                   //convertendo para adicionar ao banco
+                   data_db=Integer.parseInt(data_str);
+               }else if (mes<10){
+                   String data_str;
+                   data_str=ano+""+0+""+(mes+1)+""+dia;
+                   //convertendo para adicionar ao banco
+                   data_db=Integer.parseInt(data_str);
+               }else if(dia<10){
+                   String data_str;
+                   data_str=ano+""+(mes+1)+""+0+""+dia;
+                   //convertendo para adicionar ao banco
+                   data_db=Integer.parseInt(data_str);
+               }else {
+                   String data_str;
+                   data_str = ano + "" + (mes + 1) + "" + dia;
+                   //convertendo para adicionar ao banco
+                   data_db = Integer.parseInt(data_str);
+               }
             }
         });
 
@@ -50,19 +74,19 @@ public class Calendario extends AppCompatActivity {
         bt_agendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date data = null;
-
 
             //chamando a classe caledar para ver se a data ja se passou
                 Calendar now = new GregorianCalendar();
+
                 if (data_compromisso == null) { //se não selecionou uma data
                     Toast.makeText(getApplicationContext(), "Selecione uma data", Toast.LENGTH_SHORT).show();
-                } else if (user.before(now)) {// se data selecionada ja se passou
+                } else if (user.before(now)) {// verifica se  a data selecionada ja se passou, (metodo before faz isso)
                         Toast.makeText(getApplicationContext(), "Essa data ja se passou selecione uma atual ou posterior !!", Toast.LENGTH_SHORT).show();
 
                                              } else {// se a data for atual ou posterior chama a  outra tela
                                             Intent intent = new Intent(Calendario.this, Tela_de_cadastro.class);
                                             intent.putExtra("data_compromisso", data_compromisso);
+                                            intent.putExtra("data_db",data_db);
                                             startActivity(intent);
                                             onPause();
                                                  }
@@ -77,17 +101,18 @@ public class Calendario extends AppCompatActivity {
             bt_compromisso.setOnClickListener(new View.OnClickListener()
 
             {
-                @Override
-                public void onClick (View v){
-                Intent intent = new Intent(Calendario.this, tela_de_opcao.class);
-                intent.putExtra("data_compromisso",data_compromisso);
-                startActivity(intent);
-                onPause();
+                    @Override
+                    public void onClick (View v){
+                    Intent intent = new Intent(Calendario.this, Tela_de_expurgo.class);
+                        intent.putExtra("data_compromisso",data_compromisso);
+                        intent.putExtra("data_db",data_db);
+                    startActivity(intent);
+                    onPause();
             }
 
             });
 
-        bt_expulgar=(Button)findViewById(R.id.bt_expulgar);
+     /*   bt_expulgar=(Button)findViewById(R.id.bt_expulgar);
         bt_expulgar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +122,7 @@ public class Calendario extends AppCompatActivity {
                 onPause();
             }
 
-        });
+        });*/
         }
     @Override
     public void onPause() {

@@ -110,23 +110,32 @@
         android:text="continuar"
         android:id="@+id/bt_proxima_tela"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/tipo_evento"
         android:id="@+id/tipo_evento"
         android:layout_below="@+id/edit_descricao"
         android:layout_toStartOf="@+id/bt_proxima_tela"
-        android:layout_alignEnd="@+id/Data_de_compromisso" />
+        android:layout_alignEnd="@+id/edit_descricao" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
-        android:layout_alignTop="@+id/tipo_evento"
-        android:layout_toEndOf="@+id/tipo_evento" />
+        android:layout_below="@+id/tipo_evento"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/horario_ini" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/bt_tipo_evento"
+        android:layout_below="@+id/tipo_evento"
+        android:layout_toEndOf="@+id/spinner" />
 
 </RelativeLayout>
